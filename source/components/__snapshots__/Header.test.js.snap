@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders default header text 1`] = `"<Header/>"`;
+
+exports[`Header renders provided header text 1`] = `"<Header text={headerText}/>"`;
