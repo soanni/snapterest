@@ -47,18 +47,22 @@ function handleAction(action) {
             addTweetToCollection(action.tweet);
             emitChange();
             break;
+            
         case 'remove_tweet_from_collection':
             removeTweetFromCollection(action.tweetId);
             emitChange();
             break;
+
         case 'remove_all_tweets_from_collection':
             removeAllTweetsFromCollection();
             emitChange;
             break;
+
         case 'set_collection_name':
             setCollectionName(action.collectionName);
             emitChange();
             break;
+
         default:
     }
 }
