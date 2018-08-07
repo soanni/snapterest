@@ -20,7 +20,7 @@ function removeTweetFromCollecion(tweetId) {
 
 function removeAllTweetsFromCollection() {
     const action = {
-        type: 'remove_all_tweets_from_collection';
+        type: 'remove_all_tweets_from_collection'
     };
 
     AppDispatcher.dispatch(action);

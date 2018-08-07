@@ -3,15 +3,16 @@ import Header from './Header';
 import Button from './Button';
 import CollectionRenameForm from './CollectionRenameForm';
 import CollectionExportForm from './CollectionExportForm';
+import CollectionActionCreators from '../actions/CollectionActionCreators';
+import CollectionStore from '../stores/CollectionStore';
 
 class CollectionControls extends Component {
 	state = {
-		name: 'new',
 		isEditingName: false
 	};
 
 	getHeaderText = () => {
-		const { name } = this.state;
+		const name = CollectionStore.getCollectionName();
 		const { numberOfTweetsInCollection } = this.props;
 		let text = numberOfTweetsInCollection;
 
@@ -34,17 +35,14 @@ class CollectionControls extends Component {
 		}));
 	}
 
-	setCollectionName = (name) => {
-		this.setState({
-			name,
-			isEditingName: false
-		});
+	removeAllTweetsFromCollection = () => {
+		CollectionActionCreators.removeAllTweetsFromCollection();
 	}
 
 	render() {
 		const { name, isEditingName } = this.state;
+		const onRemoveAllTweetsFromCollection = this.removeAllTweetsFromCollection;
 		const {
-			onRemoveAllTweetsFromCollection,
 			htmlMarkup
 		} = this.props;
 
@@ -52,7 +50,6 @@ class CollectionControls extends Component {
 			return (
 				<CollectionRenameForm
 					name={name}
-					onChangeCollectionName={this.setCollectionName}
 					onCancelCollectionNameChange={this.toggleEditCollectionName}
 				/>
 			);
